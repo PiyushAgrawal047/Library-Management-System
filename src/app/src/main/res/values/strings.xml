@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">LMS</string>
-    <string name="title_activity_user_home2">UserHome2</string>
+    <string name="app_name">Drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -14,4 +13,11 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="menu_profile">profile</string>
+    <string name="menu_books">books</string>
+    <string name="menu_notification">Notifications</string>
+    <string name="about">about</string>
+    <string name="edit_profile">edit profile</string>
+    <string name="ebook">Ebooks</string>
+
 </resources>

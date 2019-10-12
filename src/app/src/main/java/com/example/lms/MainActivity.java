@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     EditText user,pass;
-    Button login;
+    Button login,signup;
     TextView t;
 
     //For now we are using fixed id and pass
@@ -48,11 +48,22 @@ public class MainActivity extends AppCompatActivity {
                 if(orginal_user!=str_user)
                 {
 
-                    t.setText("(Invalid user or pass)");
+                    t.setText("( Invalid user or password )");
                     user.setText("");
                     pass.setText("");
                 }
 
+            }
+        });
+        signup=findViewById(R.id.signup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                t.setText("");
+                user.setText("");
+                pass.setText("");
+                Intent i=new Intent(MainActivity.this,SignUp.class);
+                startActivity(i);
             }
         });
 
