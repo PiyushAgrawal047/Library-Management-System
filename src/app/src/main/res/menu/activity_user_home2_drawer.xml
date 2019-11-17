@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_ebook"
             android:icon="@drawable/ic_book_black_24dp"
-            android:title="@string/ebook" />
+            android:title="@string/menu_ebook" />
         <item
             android:id="@+id/nav_notification"
             android:title="@string/menu_notification"
@@ -37,7 +37,7 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:title="Share" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"

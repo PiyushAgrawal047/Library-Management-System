@@ -84,7 +84,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/phone"
         android:layout_below="@+id/confirm_password"
-        android:hint="Mobile "
+        android:hint="Mobile * "
         android:textColorHint="@color/colorAccent"
         android:inputType="number"
 
@@ -95,9 +95,9 @@
         android:layout_marginTop="10dp"
         android:id="@+id/address"
         android:layout_below="@+id/phone"
-        android:hint="address 1"
+        android:hint="address"
         android:textColorHint="@color/colorAccent"
-        android:inputType="textPassword"
+
 
         />
     <Button
