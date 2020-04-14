@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.lms.database.SignUpForm;
@@ -23,6 +24,7 @@ public class SignUp extends AppCompatActivity {
     private EditText editFirst,editLast,editAddress,editPass,editConf,editEmail,editPhone;
     private String first,last,email,pass,confirm,mobile,address;
     private Button signup;
+    ProgressBar progressBar;
 
     //Object of SignUpForm to take input and insert into database
     SignUpForm form=new SignUpForm();
@@ -46,18 +48,19 @@ public class SignUp extends AppCompatActivity {
         editConf=(EditText) findViewById(R.id.confirm_password);
         editPhone=findViewById(R.id.phone);
         editAddress=findViewById(R.id.address);
-
+        progressBar=findViewById(R.id.progress);
 
         signup=findViewById(R.id.sign);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                progressBar.setVisibility(View.VISIBLE);
 
                 first=editFirst.getText().toString();
                 if(first.isEmpty())
                 {
                     editFirst.setError("First Name Required");
+                    progressBar.setVisibility(View.GONE);
                 }
                 else
                 {
@@ -69,8 +72,14 @@ public class SignUp extends AppCompatActivity {
                 if(pass.isEmpty())
                 {
                     editPass.setError("Provide password");
+                    progressBar.setVisibility(View.GONE);
 
                 }
+                /*if(pass.length()<6)
+                {
+                    progressBar.setVisibility(View.GONE);
+                    editPass.setError("Password at least 6 char");
+                }*/
                 else
                 {
                     form.setPassword(pass);
@@ -82,6 +91,7 @@ public class SignUp extends AppCompatActivity {
                 if(email.isEmpty())
                 {
                     editEmail.setError("Email Required");
+                    progressBar.setVisibility(View.GONE);
                 }
                 else {
                     form.setEmail(email);
@@ -92,6 +102,7 @@ public class SignUp extends AppCompatActivity {
                 if(mobile.isEmpty())
                 {
                     editPhone.setError("Mobile Required");
+                    progressBar.setVisibility(View.GONE);
                 }
                 else
                 {
@@ -100,7 +111,7 @@ public class SignUp extends AppCompatActivity {
 
                 if (email.isEmpty() || first.isEmpty() || mobile.isEmpty() ||pass.isEmpty())
                 {
-
+                    progressBar.setVisibility(View.GONE);
                 }
                 else
                 {
@@ -125,16 +136,20 @@ public class SignUp extends AppCompatActivity {
     }
     public void authenticate()
     {
+
         FirebaseAuth mAuth=FirebaseAuth.getInstance();
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(form.getEmail(),form.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
+                    progressBar.setVisibility(View.GONE);
                     InsertInDataBase();
                 }
                 else
                 {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(SignUp.this,"Failed to Register "+form.getEmail(),Toast.LENGTH_SHORT).show();
                 }
 
